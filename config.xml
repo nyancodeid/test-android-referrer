@@ -22,7 +22,7 @@
   <plugin name="cordova-plugin-whitelist" source="npm"/>
   <plugin name="cordova-plugin-extension" source="npm" />
   <plugin name="cordova-plugin-device" spec="2.0.0"/>
-  <plugin spec="https://github.com/vijayrajasekaran/cordova-plugin-referrer" source="github"/>
+  <plugin spec="https://github.com/vijayrajasekaran/cordova-plugin-referrer" source="git"/>
 
   <access origin="*"/>
 
