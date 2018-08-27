@@ -1,6 +1,8 @@
 var Events = {
     onDeviceReady: function() {
-        function ok (value) { alert('OK: ' + value) }
+        function ok (value) { 
+            document.getElementById('nyan').innerHTML = value.toString();
+        }
         function fail (error) { alert('ERR: ' + value) }
 
         var prefs = plugins.appPreferences;
