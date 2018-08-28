@@ -4,10 +4,12 @@ var Events = {
 		var referral = null;
 		var count = 0;
 		var intervalReferrer = setInterval(function() {
+			document.getElementById('nyan').innerHTML = "Loading";
+
 			if (referral == null) {
 				if (count < 5) {
 					prefs.fetch(function(value) { 
-						localStorage.setItem('referral', value);			
+						referral = value;			
 					}, function(error) {
 						alert('Error: ' + error)
 					}, 'referrer');
@@ -23,7 +25,7 @@ var Events = {
 			}
 
 			count++;
-		}, 1000)
+		}, 1000);
     }
 }
 
