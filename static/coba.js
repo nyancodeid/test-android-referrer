@@ -1,13 +1,29 @@
 var Events = {
     onDeviceReady: function() {
-        function ok (value) { 
-            document.getElementById('nyan').innerHTML = value.toString();
-        }
-        function fail (error) { alert('ERR: ' + value) }
+		var prefs = plugins.appPreferences;
+		var referral = null;
+		var count = 0;
+		var intervalReferrer = setInterval(function() {
+			if (referral == null) {
+				if (count < 5) {
+					prefs.fetch(function(value) { 
+						localStorage.setItem('referral', value);			
+					}, function(error) {
+						alert('Error: ' + error)
+					}, 'referrer');
+				} else {
+					document.getElementById('nyan').innerHTML = "No Referral";
 
-        var prefs = plugins.appPreferences;
-        
-        prefs.fetch (ok, fail, 'referrer');
+					clearInterval(intervalReferrer);
+				}
+			} else {
+				document.getElementById('nyan').innerHTML = referral;
+				
+				clearInterval(intervalReferrer);
+			}
+
+			count++;
+		}, 1000)
     }
 }
 
